@@ -10,6 +10,48 @@ export class Item {
   }
 }
 
+// Rules say I should not alter Item class so here's new class that uses existing one
+export class ItemV2 extends Item {
+
+  updateMethod: UpdateMethod;
+
+  constructor(name, sellIn, quality, updateMethod) {
+    super(name, sellIn, quality);
+    this.updateMethod = updateMethod;
+  }
+
+}
+
+enum UpdateMethod {
+  Regular,
+  Conjured,
+  Sulfuras,
+  Backstage
+}
+
+const updateRegular = (item: ItemV2) => {
+
+}
+
+const updateConjured = (item: ItemV2) => {
+
+}
+
+const updateSulfuras = (item: ItemV2) => {
+
+}
+
+const updateBackstage = (item: ItemV2) => {
+
+}
+
+const updateMethodsUtils = {
+  [UpdateMethod.Regular]: updateRegular,
+  [UpdateMethod.Conjured]: updateConjured,
+  [UpdateMethod.Sulfuras]: updateSulfuras,
+  [UpdateMethod.Backstage]: updateBackstage,
+}
+
 export class GildedRose {
   items: Array<Item>;
 
