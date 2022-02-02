@@ -2,8 +2,16 @@ import {ItemV2} from "@/gilded-rose";
 
 const update = (item: ItemV2, denominator = 1) => {
   const newQuality = item.quality - (item.sellIn < 0 ? 2 : 1) * denominator
-  item.quality = newQuality < 0 ? 0 : newQuality > 50 ? 50 : newQuality;
-  item.sellIn = item.sellIn - denominator;
+  item.quality = newQuality;
+  if (newQuality < 0) {
+    item.quality = 0;
+  }
+
+  if (newQuality > 50) {
+    item.quality = 50;
+  }
+
+  item.sellIn = item.sellIn - 1;
 }
 
 export const updateRegular = (item: ItemV2) => {
