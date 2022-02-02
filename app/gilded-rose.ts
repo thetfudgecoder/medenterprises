@@ -30,7 +30,9 @@ enum UpdateMethod {
 }
 
 const updateRegular = (item: ItemV2) => {
-
+  const newQuality = item.quality - item.sellIn < 0 ? 2 : 1
+  item.quality = newQuality < 0 ? 0 : newQuality;
+  item.sellIn = item.sellIn -1;
 }
 
 const updateConjured = (item: ItemV2) => {
