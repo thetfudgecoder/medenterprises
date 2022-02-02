@@ -1,19 +1,19 @@
-import { Item, GildedRose } from '@/gilded-rose';
+import { GildedRose, ItemV2 } from '@/gilded-rose';
+import { UpdateMethod } from "@/updateMethods";
 
 const items = [
-  new Item("+5 Dexterity Vest", 10, 20), //
-  new Item("Aged Brie", 2, 0), //
-  new Item("Elixir of the Mongoose", 5, 7), //
-  new Item("Sulfuras, Hand of Ragnaros", 0, 80), //
-  new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-  new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-  new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-  new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+  new ItemV2("+5 Dexterity Vest", 10, 20, UpdateMethod.Regular), //
+  new ItemV2("Aged Brie", 2, 0, UpdateMethod.Brie), //
+  new ItemV2("Elixir of the Mongoose", 5, 7, UpdateMethod.Regular), //
+  new ItemV2("Sulfuras, Hand of Ragnaros", 0, 80, UpdateMethod.Sulfuras), //
+  new ItemV2("Sulfuras, Hand of Ragnaros", -1, 80, UpdateMethod.Sulfuras),
+  new ItemV2("Backstage passes to a TAFKAL80ETC concert", 15, 20, UpdateMethod.Backstage),
+  new ItemV2("Backstage passes to a TAFKAL80ETC concert", 10, 49, UpdateMethod.Backstage),
+  new ItemV2("Backstage passes to a TAFKAL80ETC concert", 5, 49, UpdateMethod.Backstage),
   // this conjured item does not work properly yet
-  new Item("Conjured Mana Cake", 3, 6)];
+  new ItemV2("Conjured Mana Cake", 3, 6, UpdateMethod.Conjured)];
 
 
-const gildedRose = new GildedRose(items);
 const days = 2;
 for (let i = 0; i < days; i++) {
   console.log("-------- day " + i + " --------");
@@ -22,5 +22,5 @@ for (let i = 0; i < days; i++) {
     console.log(element.name + ' ' + element.sellIn + ' ' + element.quality);
   });
   console.log();
-  gildedRose.updateQuality();
+  GildedRose.updateQuality(items);
 }

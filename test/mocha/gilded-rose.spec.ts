@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import { Item, GildedRose } from '@/gilded-rose';
+import {GildedRose, ItemV2} from '@/gilded-rose';
+import {UpdateMethod} from "@/updateMethods";
 
 describe('Gilded Rose', () => {
   it('should foo', () => {
-    const gildedRose = new GildedRose([new Item('foo', 0, 0)]);
-    const items = gildedRose.updateQuality();
+    const items = GildedRose.updateQuality([new ItemV2('foo', 0, 0, UpdateMethod.Regular)]);
     expect(items[0].name).to.equal('fixme');
   });
 });
